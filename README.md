@@ -2,7 +2,7 @@
 
 This image allows you to run a git server in a container with OpenSSH and [Gitolite](https://github.com/sitaramc/gitolite#readme).
 
-Based on Alpine Linux.
+Based on Alpine Linux and the great work of [jgiannuzzi](https://github.com/jgiannuzzi/docker-gitolite)
 
 ## Quick setup
 
