@@ -1,0 +1,7 @@
+PubkeyAuthentication            yes
+AuthorizedKeysFile              .ssh/authorized_keys
+PasswordAuthentication          no
+PermitEmptyPasswords            no
+ChallengeResponseAuthentication no
+UsePAM                          yes
+PrintMotd                       no

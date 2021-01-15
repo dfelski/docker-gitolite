@@ -1,0 +1,17 @@
+version: '3.3'
+
+services:
+  gitserver:
+    image: dfelski/gitolite:latest
+    environment:
+      - SSH_KEY=<YOUR PUBLIC SSH KEY>
+      - SSH_KEY_NAME=admin
+    ports:
+      - "22:22"
+    volumes:
+      - gitserver-keys:/etc/ssh/keys
+      - gitserver-git:/var/lib/git
+
+volumes:
+  gitserver-keys:
+  gitserver-git:
