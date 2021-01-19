@@ -17,15 +17,13 @@ done
 chown -R git:git /var/lib/git
 
 # Setup gitolite admin
-if [ ! -f ~git/.ssh/authorized_keys ]; then
+if [ ! -f /var/lib/git/.ssh/authorized_keys ]; then
   if [ -n "$SSH_KEY" ]; then
-    [ -n "$SSH_KEY_NAME" ] || SSH_KEY_NAME=admin
-    echo "$SSH_KEY" > "/tmp/$SSH_KEY_NAME.pub"
-    su - git -c "gitolite setup -pk \"/tmp/$SSH_KEY_NAME.pub\""
-    rm "/tmp/$SSH_KEY_NAME.pub"
+    echo "$SSH_KEY" > "/tmp/git_admin.pub"
+    su - git -c "gitolite setup -pk \"/tmp/git_admin.pub\""
+    rm "/tmp/git_admin.pub"
   else
-    echo "You need to specify SSH_KEY on first run to setup gitolite"
-    echo "You can also use SSH_KEY_NAME to specify the key name (optional)"
+    echo "You need to specify SSH_KEY for admin on first run to setup gitolite"
     exit 1
   fi
 # Check setup at every startup
