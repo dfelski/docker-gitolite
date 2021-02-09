@@ -20,6 +20,7 @@ chown -R git:git /var/lib/git
 if [ ! -f /var/lib/git/.ssh/authorized_keys ]; then
   if [ -n "$SSH_KEY" ]; then
     echo "$SSH_KEY" > "/tmp/git_admin.pub"
+    ssh-keygen -l -f /tmp/git_admin.pub
     su - git -c "gitolite setup -pk \"/tmp/git_admin.pub\""
     rm "/tmp/git_admin.pub"
   else
